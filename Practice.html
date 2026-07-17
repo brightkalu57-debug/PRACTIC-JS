@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <style>
+      .div1 {
+        background-color: black;
+        width: fit-content;
+        height: fit-content;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 30px;
+      }
+      .div2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+      .js-button3 {
+        width: 70px;
+        height: 70px;
+        border-radius: 40px;
+        background-color: rgba(128, 128, 128, 0.288);
+        color: white;
+        font-size: 19px;
+        margin-bottom: 10px;
+      }
+      .js-button4 {
+        width: 70px;
+        height: 70px;
+        border-radius: 40px;
+        background-color: rgba(255, 166, 0, 0.884);
+        color: white;
+        font-size: 19px;
+        margin-bottom: 10px;
+      }
+      .div1 input {
+        background-color: black;
+        color: white;
+        border: none;
+        font-size: 30px;
+        outline: none;
+        padding-bottom: 12px;
+        padding-top: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <button
+      class="js-button"
+      onclick="
+    pElement.innerHTML='You chose: Heads'
+      "
+    >
+      Heads
+    </button>
+    <button
+      class="js-button2"
+      onclick="
+    pElement.innerHTML='You chose: Tails'
+    "
+    >
+      Tails
+    </button>
+    <p class="js-paragraph"></p>
+    <input
+      placeholder="Name"
+      class="js-input"
+      onkeydown="
+      if (event.key === 'Enter') {pElement2.innerHTML = `Your name is: ${inputElement.value}`}
+      "
+    />
+    <button
+      onclick="
+        pElement2.innerHTML = `Your name is: ${inputElement.value}`
+      "
+    >
+      Submit
+    </button>
+    <p class="js-paragraph2"></p>
+    <input
+      placeholder="Type Something"
+      class="js-input2"
+      onkeyup="
+      pElement3.innerHTML = inputElement2.value
+      "
+    />
+    <p class="js-paragraph3"></p>
+    <div class="div1">
+      <input
+        class="js-input3"
+        onkeydown="
+        if (event.key === 'Enter') {inputElement3.value = eval (inputElement3.value)}
+        "
+      />
+      <div class="div2">
+        <button
+          class="js-button3"
+          onclick="inputElement3.value += 1"
+        >
+          1
+        </button>
+        <button
+          class="js-button3"
+          onclick="inputElement3.value += 2"
+        >
+          2
+        </button>
+        <button
+          class="js-button3"
+          onclick="inputElement3.value += 3"
+        >
+          3
+        </button>
+        <button
+          class="js-button4"
+          onclick="inputElement3.value += '+'"
+        >
+          +
+        </button>
+        <button
+          class="js-button3"
+          onclick="inputElement3.value += 4"
+        >
+          4
+        </button>
+        <button
+          class="js-button3"
+          onclick="inputElement3.value += 5"
+        >
+          5
+        </button>
+        <button
+          class="js-button3"
+          onclick="inputElement3.value += 6"
+        >
+          6
+        </button>
+        <button
+          class="js-button4"
+          onclick="inputElement3.value += '-'"
+        >
+          -
+        </button>
+        <button
+          class="js-button3"
+          onclick="inputElement3.value += 7"
+        >
+          7
+        </button>
+        <button
+          class="js-button3"
+          onclick="inputElement3.value += 8"
+        >
+          8
+        </button>
+        <button
+          class="js-button3"
+          onclick="inputElement3.value += 9"
+        >
+          9
+        </button>
+        <button
+          class="js-button4"
+          onclick="inputElement3.value += '*'"
+        >
+          *
+        </button>
+        <button
+          class="js-button3"
+          onclick="inputElement3.value += 0"
+        >
+          0
+        </button>
+        <button
+          class="js-button3"
+          onclick="inputElement3.value += '.'"
+        >
+          .
+        </button>
+        <button
+          class="js-button3"
+          onclick="inputElement3.value = eval (inputElement3.value)"
+        >
+          =
+        </button>
+        <button
+          class="js-button4"
+          onclick="inputElement3.value += '/'"
+        >
+          /
+        </button>
+        <button
+          class="js-button3"
+          onclick="inputElement3.value = ''"
+        >
+          Clear
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const pElement = document.querySelector('.js-paragraph');
+      const pElement2 = document.querySelector('.js-paragraph2');
+      const pElement3 = document.querySelector('.js-paragraph3');
+      const inputElement = document.querySelector('.js-input');
+      const inputElement2 = document.querySelector('.js-input2');
+      const inputElement3 = document.querySelector('.js-input3');
+    </script>
+  </body>
+</html>

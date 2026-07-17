@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document2</title>
+  </head>
+  <body>
+    <button
+      onclick="
+      addnumbers('show quantity') "
+    >
+      Show quantity
+    </button>
+    <button
+      onclick="
+      addnumbers(1) "
+    >
+      Add to Cart
+    </button>
+    <button
+      onclick="
+        addnumbers(2)"
+    >
+      +2
+    </button>
+    <button
+      onclick="
+      addnumbers(3)"
+    >
+      +3
+    </button>
+    <button
+      onclick="
+      addnumbers(4)"
+    >
+      +4
+    </button>
+    <button
+      onclick="
+      addnumbers(5)"
+    >
+      +5
+    </button>
+    <button
+      onclick="
+      addnumbers(-1)"
+    >
+      Remove from cart
+    </button>
+    <button
+      onclick="
+      addnumbers(-2)"
+    >
+      -2
+    </button>
+    <button
+      onclick="
+      addnumbers(-3)"
+    >
+      -3
+    </button>
+    <p class="js-paragraph"></p>
+
+    <script>
+      let cartquantity = 0;
+      const pElement = document.querySelector('.js-paragraph');
+      function addnumbers(number) {
+        if (number === 1) {
+          cartquantity += 1;
+          pElement.innerHTML = `Cart quantity: ${cartquantity}`;
+        } else if (number === 2) {
+          cartquantity += 2;
+          pElement.innerHTML = `Cart quantity: ${cartquantity}`;
+        } else if (number === 3) {
+          cartquantity += 3;
+          pElement.innerHTML = `Cart quantity: ${cartquantity}`;
+        } else if (number === 4) {
+          cartquantity += 4;
+          pElement.innerHTML = `Cart quantity: ${cartquantity}`;
+        } else if (number === 5) {
+          cartquantity += 5;
+          pElement.innerHTML = `Cart quantity: ${cartquantity}`;
+        } else if (number === -1) {
+          cartquantity += -1;
+          pElement.innerHTML = `Cart quantity: ${cartquantity}`;
+        } else if (number === -2) {
+          cartquantity += -2;
+          pElement.innerHTML = `Cart quantity: ${cartquantity}`;
+        } else if (number === -3) {
+          cartquantity += -3;
+          pElement.innerHTML = `Cart quantity: ${cartquantity}`;
+        } else if (number === 'show quantity') {
+          pElement.innerHTML = `Cart quantity: ${cartquantity}`;
+        }
+      }
+    </script>
+  </body>
+</html>

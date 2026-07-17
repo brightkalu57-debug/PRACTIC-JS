@@ -1,0 +1,79 @@
+body {
+    font-family: roboto;
+}
+.heading {
+    display: flex;
+    background-color: rgb(19, 25, 33);
+    align-items: center; 
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    padding: 10px 0px;
+}
+.header-img-column1 {
+    width: 100px;
+    margin-left: 20px;
+}
+.header-column2 {
+    display: flex;
+}
+.header-column2 input{
+    height: 30px;
+    width: 760px;
+    padding: 5px 19px;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 16px;
+    margin-left: 87px;
+}
+.header-column2 button{
+    height: auto;
+    width: 50px;
+    border: none;
+    background-color: rgb(240, 188, 93);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.header-column2 img {
+    width: 23px;
+}
+.header-column2 input::placeholder{
+    font-size: 17px;
+    font-family: roboto;
+}
+.header-p-column3{
+    color: white;
+    width: 65px;
+    margin: 0px;
+    font-size: 13px;
+    margin-left: 30px;
+}
+.header-p-column3 span{
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 15px;
+}
+.header-column4 {
+    display: flex;
+    position: relative;
+}
+.header-column4-p1{
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 0px;
+}
+.header-column4-p2{
+    position: absolute;
+    color: white;
+    bottom: 0px;
+    right: 47px;
+    color: orange;
+    font-weight: bold;
+}
+.header-column4 img {
+    width: 50px;
+}

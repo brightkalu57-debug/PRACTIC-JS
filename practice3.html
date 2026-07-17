@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <style>
+      .gamingbtn {
+        background-color: black;
+        color: white;
+        padding: 7px 15px;
+        font-size: 17px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+      }
+      .gamingbtn:hover {
+        background-color: rgb(87, 86, 86);
+      }
+      .is-toggled {
+        background-color: rgb(185, 185, 185);
+        color: black;
+        font-weight: bold;
+      }
+      .loadingdiv {
+        font-weight: bold;
+        font-family: sans-serif;
+        font-size: 16px;
+        align-self: center;
+      }
+      .loadingdivdiv {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        width: fit-content;
+      }
+    </style>
+  </head>
+  <body>
+    <button
+      onclick="btntoggle(this);"
+      class="js-button gamingbtn"
+    >
+      Gaming
+    </button>
+    <button
+      onclick="btntoggle(this);"
+      class="js-button gamingbtn"
+    >
+      Music
+    </button>
+    <button
+      onclick="btntoggle(this);"
+      class="js-button gamingbtn"
+    >
+      Tech
+    </button>
+    <button
+      class="js-loadingbtn gamingbtn"
+      onclick="loadingbtn();"
+    >
+      START
+    </button>
+    <div class="loadingdivdiv">
+      <button
+        class="js-loadingbtn1 gamingbtn"
+        onclick="
+      addtocart();
+      "
+      >
+        Add to Cart
+      </button>
+      <div class="js-div loadingdiv"></div>
+    </div>
+
+    <script>
+      function btntoggle(button) {
+        console.log(button);
+        if (button.classList.contains('is-toggled')) {
+          button.classList.remove('is-toggled');
+        } else {
+          button.classList.add('is-toggled');
+        }
+      }
+      function loadingbtn() {
+        const btnElement1 = document.querySelector('.js-loadingbtn');
+        btnElement1.innerHTML = 'Loading...';
+
+        setTimeout(function () {
+          btnElement1.innerHTML = 'FINISHED';
+        }, 1000);
+      }
+
+      function addtocart() {
+        let html = '<p> Added to Cart <p>';
+        const divElement = document.querySelector('.js-div');
+        setTimeout(function () {
+          divElement.innerHTML = html;
+        }, 1000);
+        setTimeout(function () {
+          divElement.innerHTML = '';
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>
