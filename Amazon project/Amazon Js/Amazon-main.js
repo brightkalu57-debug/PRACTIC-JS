@@ -290,11 +290,9 @@ product.forEach(mainhtml => {
       <option value="4">7</option>
       <option value="4">8</option>
     </select>
-    <button class="main-addcartbtn-div">Add to Cart</button>
+    <button class="main-addcartbtn-div js-main-addcartbtn" data-product-name="${mainhtml.name}">Add to Cart</button>
   </div>`                                                 
   document.querySelector('.js-maincontainer')
   .innerHTML = html
-  
 })
-
 ;
