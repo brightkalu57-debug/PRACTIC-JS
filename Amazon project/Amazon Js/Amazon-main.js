@@ -1,113 +1,113 @@
 const product = [{
-    img: './Amazon images/athletic-cotton-socks-6-pair. Amazon.jpg',
+    img: '../Amazon images/athletic-cotton-socks-6-pair. Amazon.jpg',
     name: 'Black and Gray Athletic Cotton Socks - 6 Pairs',
     ratingstars: '45',
     ratingno: 87,
     pricecents: 1090,
 },{
-    img: './Amazon images/intermediate-composite-basketball. Amazon.jpg',
+    img: '../Amazon images/intermediate-composite-basketball. Amazon.jpg',
     name: 'Intermediate Size Basketball',
     ratingstars: '4',
     ratingno: 127,
     pricecents: 2095,
 },{ 
-    img: './Amazon images/adults-plain-cotton-tshirt-2-pack-teal.Amazon.jpg',
+    img: '../Amazon images/adults-plain-cotton-tshirt-2-pack-teal.Amazon.jpg',
     name: 'Adults Plain Cotton T-Shirt - 2 Pack',
     ratingstars: '45',
     ratingno: 56,
     pricecents: 799,
 },{
-    img: './Amazon images/black-2-slot-toaster.Amazon.jpg',
+    img: '../Amazon images/black-2-slot-toaster.Amazon.jpg',
     name: '2 Slot Toaster - Black',
     ratingstars: '5',
     ratingno: 2197,
     pricecents: 1899,
 },{
-    img: './Amazon images/6-piece-white-dinner-plate-set.Amazon.jpg',
+    img: '../Amazon images/6-piece-white-dinner-plate-set.Amazon.jpg',
     name: '6 Piece White Dinner Plate Set',
     ratingstars: '4',
     ratingno: 37,
     pricecents: 2067,
 },{
-    img: './Amazon images/6-piece-non-stick-baking-set.Amazon.webp',
+    img: '../Amazon images/6-piece-non-stick-baking-set.Amazon.webp',
     name: '6-Piece Nonstick, Carbon Steel Oven Bakeware Bakin',
     ratingstars: '45',
     ratingno: 175,
     pricecents: 3499,
 },{
-    img: './Amazon images/plain-hooded-fleece-sweatshirt-yellow.Amazon.jpg',
+    img: '../Amazon images/plain-hooded-fleece-sweatshirt-yellow.Amazon.jpg',
     name: 'Plain Hooded Fleece Sweatshirt',
     ratingstars: '45',
     ratingno: 175,
     pricecents: 2400,
 },{
-    img: './Amazon images/luxury-tower-set-6-piece.Amazon.jpg',
+    img: '../Amazon images/luxury-tower-set-6-piece.Amazon.jpg',
     name: 'Luxury Towel Set - Graphite Gray',
     ratingstars: '45',
     ratingno: 144,
     pricecents: 3599,
 },{
-    img: './Amazon images/liquid-laundry-detergent-plain.Amazon.jpg',
+    img: '../Amazon images/liquid-laundry-detergent-plain.Amazon.jpg',
     name: 'Liquid Laundry Detergent, 110 Loads, 82.5 Fl Oz',
     ratingstars: '45',
     ratingno: 305,
     pricecents: 2899,
 },{
-    img: './Amazon images/knit-athletic-sneakers-gray.Amazon.jpg',
+    img: '../Amazon images/knit-athletic-sneakers-gray.Amazon.jpg',
     name: 'Waterproof Knit Athletic Sneakers - Gray',
     ratingstars: '4',
     ratingno: 89,
     pricecents: 3390,
 },{
-    img: './Amazon images/women-chiffon-beachwear-coverup-black.Amazon.jpg',
+    img: '../Amazon images/women-chiffon-beachwear-coverup-black.Amazon.jpg',
     name: `Women's Chiffon Beachwear Cover Up - Black`,
     ratingstars: '45',
     ratingno: 235,
     pricecents: 2070,
 },{
-    img: './Amazon images/round-sunglasses-black.Amazon.jpg',
+    img: '../Amazon images/round-sunglasses-black.Amazon.jpg',
     name: `Round Sunglasses`,
     ratingstars: '45',
     ratingno: 30,
     pricecents: 1560,
 },{
-    img: './Amazon images/women-beach-sandals.Amazon.jpg',
+    img: '../Amazon images/women-beach-sandals.Amazon.jpg',
     name: `Women's Two Strap Buckle Sandals - Tan`,
     ratingstars: '45',
     ratingno: 562,
     pricecents: 2499,
 },{
-    img: './Amazon images/blackout-curtain-set-beige.Amazon.webp',
+    img: '../Amazon images/blackout-curtain-set-beige.Amazon.webp',
     name: `Blackout Curtains Set 4-Pack - Beige`,
     ratingstars: '45',
     ratingno: 232,
     pricecents: 4599,
 },{
-    img: './Amazon images/men-slim-fit-summer-shorts-gray.Amazon.jpg',
+    img: '../Amazon images/men-slim-fit-summer-shorts-gray.Amazon.jpg',
     name: `Men's Slim-Fit Summer Shorts`,
     ratingstars: '45',
     ratingno: 160,
     pricecents: 1699,
 },{
-    img: './Amazon images/electric-glass-and-steel-hot-water-kettle.Amazon.webp',
+    img: '../Amazon images/electric-glass-and-steel-hot-water-kettle.Amazon.webp',
     name: `Electric Glass and Steel Hot Tea Water Kettle - 1.7-Liter`,
     ratingstars: '5',
     ratingno: 846,
     pricecents: 3074,
 },{
-    img: './Amazon images/facial-tissue-2-ply-18-boxes.Amazon.jpg',
+    img: '../Amazon images/facial-tissue-2-ply-18-boxes.Amazon.jpg',
     name: `Ultra Soft Tissue 2-Ply - 18 Box`,
     ratingstars: '4',
     ratingno: 99,
     pricecents: 2374,
 },{
-    img: './Amazon images/straw-sunhat.Amazon.webp',
+    img: '../Amazon images/straw-sunhat.Amazon.webp',
     name: `Straw Lifeguard Sun Hat`,
     ratingstars: '4',
     ratingno: 215,
     pricecents: 2200,
 },{
-    img: '/Amazon project/Amazon images/sky-flower-stud-earrings.Amazon.webp',
+    img: '../Amazon project/Amazon images/sky-flower-stud-earrings.Amazon.webp',
     name: `Sterling Silver Sky Flower Stud Earrings`,
     ratingstars: '45',
     ratingno: 52,
@@ -267,7 +267,7 @@ product.forEach(mainhtml => {
     <div class="main-rating-div">
       <img
         class="main-rating-img-div"
-        src="./Amazon images/rating-${mainhtml.ratingstars}.Amazon.png"
+        src="../Amazon images/rating-${mainhtml.ratingstars}.Amazon.png"
       />
       <p class="main-rating-p1-div">${mainhtml.ratingno}</p>
     </div>
