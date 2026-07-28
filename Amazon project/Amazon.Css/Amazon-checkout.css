@@ -146,7 +146,7 @@
     width: fit-content;
     margin-left: 12px;
     margin-right: 100px;
-    padding: 25px 20px;
+    padding: 20px 20px;
 }
 .checkoutPlaceorder-container-p1{
     font-weight: bold;
@@ -207,4 +207,9 @@
     padding:  13px 0px;
     background-color: rgb(255, 217, 0);
     border-radius: 8px;
+}
+.Products-parent-div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 13px;
 }
