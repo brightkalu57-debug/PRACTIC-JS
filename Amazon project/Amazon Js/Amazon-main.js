@@ -1,5 +1,6 @@
 import { product } from "./Amazon-product.js";
 import { addcartbtn } from "./Amazon-add to cart button.js";
+import { cart } from "./Amazon-cart.js";
 let html = '';
   product.forEach(mainhtml => {
     html += `<div class="main-div">
@@ -20,9 +21,9 @@ let html = '';
     </div>
     <p class="main-p1-div">$${(mainhtml.pricecents/100).toFixed(2)}</p>
     <select
-      id="quantity"
+      data-product-id="${mainhtml.id}"
       name="quantity"
-      class="main-dropdownmenu-div"
+      class="main-dropdownmenu-div js-main-dropdownmenu-div"
     >
       <option
         value="1"
@@ -36,6 +37,8 @@ let html = '';
       <option value="6">6</option>
       <option value="7">7</option>
       <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
     </select>
     <button class="main-addcartbtn-div js-main-addcartbtn" data-product-id="${mainhtml.id}">Add to Cart</button>
   </div>`                                                 

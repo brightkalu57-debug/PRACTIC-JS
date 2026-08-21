@@ -1,5 +1,4 @@
 import {cart} from "./Amazon-cart.js";
-localStorage.clear();
 function updateCarthtml (){
     let quantitys = 0;
         cart.forEach((Tan) => {
@@ -18,31 +17,41 @@ export function addcartbtn () {
     { 
 
         const productId = button.dataset.productId;
-
-        updateCarthtml ();
         let matchingitems ;
         cart.forEach(items => {
             if (items.productId === Number(productId)) {
                 matchingitems = items
+                console.log(matchingitems);
             }
         });
-
-        if(matchingitems) {
-            matchingitems.quantity +=1
-        } else {
-            cart.push({
-            productId: Number(productId),
-            quantity: 1 
-            });
-        };
         
+        const  select = document.querySelectorAll('.js-main-dropdownmenu-div');
+        select.forEach((selects)=>{
+                if(Number(button.dataset.productId) === Number(selects.dataset.productId)){
+                    if(matchingitems) {
+                        matchingitems.quantity += Number(selects.value)
+                    } else {
+                        cart.push({
+                        productId: Number(productId),
+                        quantity: Number(selects.value),
+                        Shippingpprice: 0
+                        });
+                    };
+                }
+        })
+
+        
+        
+
+        updateCarthtml ();
         localStorage.setItem("cart", JSON.stringify(cart));
-        console.log(matchingitems.quantity);
+
 
     });
 });
 };
 
+addcartbtn ();
 
-updateCarthtml ();
+updateCarthtml (); 
 

@@ -70,8 +70,10 @@ body {
     position: absolute;
     color: white;
     bottom: 0px;
-    right: 47px;
-    color: orange;
+    left: 16px;
+    width: 26px;
+    text-align: center;
+    color: rgb(240, 136, 4);
     font-weight: bold;
 }
 .header-column4 img {
