@@ -1,4 +1,5 @@
 import { cart } from "./Amazon-cart.js";
+import { checkouProduct } from "./Amazon-checkout.js";
 export function Shippingpprice(){
     const Shipping = document.querySelector('.js-checkoutPlaceorder-container-div2');
     const radio = document.querySelectorAll('.js-checkout-labelradio');
@@ -23,8 +24,9 @@ export function Shippingpprice(){
             cart.forEach((items)=>{
                 addShippingpprice += Number(items.Shippingpprice);
                 Shipping.innerHTML= `$${(addShippingpprice/100).toFixed(2)}`;
-                console.log(addShippingpprice/100)
             })
+            checkouProduct();
+            console.log(addShippingpprice/100)
         })
             
     });

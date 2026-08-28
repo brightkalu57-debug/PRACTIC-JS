@@ -3,12 +3,13 @@ import {cart} from "./Amazon-cart.js";
 import {Shippingpprice} from "./delivery date.js";
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 const add9days = dayjs().add(9, 'days')
-const  FREEShipping = add9days .format('dddd, MMMM D') 
+export const  FREEShipping = add9days .format('dddd, MMMM D') 
 const add3days = dayjs().add(3, 'days')
-const  ThreedaysShipping = add3days .format('dddd, MMMM D') 
+export const  ThreedaysShipping = add3days .format('dddd, MMMM D') 
 const add1days = dayjs().add(1, 'days')
-const  onedaysShipping = add1days .format('dddd, MMMM D') 
+export const  onedaysShipping = add1days .format('dddd, MMMM D') 
 console.log(FREEShipping);
+
 function checkout (){
   let checkouItem = 0;
       cart.forEach((item) => {
@@ -16,21 +17,40 @@ function checkout (){
       })
 
       document.querySelector('.js-header-p1-span')
-      .innerHTML = `${checkouItem} items` ;
+      .innerHTML =`${checkouItem} items`;
 };
-function checkouProduct (){
+
+export function checkouProduct (){
   let addedproduct = '';
   let Itemsquantity = 0;   
-  let Itemsprice = 0
+  let Itemsprice = 0;
+  let totalBeforeTax = 0;
+  let estimatedTax = 0;
+  let addShippingpprices = 0;
+  let orderTotal = 0;
+  let deliveryDate = '';
 product.forEach(productitems => {
   cart.forEach((cartitems) => {
+      if (cartitems.Shippingpprice === 0){
+        deliveryDate = `Delivery date: ${FREEShipping}`;
+      }else if (cartitems.Shippingpprice === 499){
+        deliveryDate = `Delivery date: ${ThreedaysShipping}`;
+      }else if (cartitems.Shippingpprice === 999){
+        deliveryDate = `Delivery date: ${onedaysShipping}`
+      }
       if (cartitems.productId === productitems.id ) {
         Itemsquantity += cartitems.quantity;
-        Itemsprice += ((productitems.pricecents)*cartitems.quantity);
+        Itemsprice += (Math.round((productitems.pricecents)*cartitems.quantity));
+
+        addShippingpprices += Number(cartitems.Shippingpprice);
+        totalBeforeTax = (Math.round(addShippingpprices + Itemsprice));
+        estimatedTax = (Math.round(totalBeforeTax*(1/10)));
+        orderTotal = ((Itemsprice + addShippingpprices + estimatedTax))
+
         addedproduct +=
           `<div class="checkout-product-container">
-            <p class="checkout-product-container-row1-p1">
-              Delivery date: Friday, July 31
+            <p class="checkout-product-container-row1-p1 js-checkout-product-container-row1-p1">
+            ${deliveryDate}
             </p>
             <div class="checkout-product-container-row2">
               <div class="checkout-product-container-row2-column1">
@@ -135,15 +155,15 @@ product.forEach(productitems => {
       <hr class="checkoutPlaceorder-container-hr1" />
       <div class="checkoutPlaceorder-container-div3">
         <p>Total before tax:</p>
-        <p>$20.89</p>
+        <p>$${(totalBeforeTax/100).toFixed(2)}</p>
       </div>
       <div class="checkoutPlaceorder-container-div4">
         <p>Estimated tax (10%):</p>
-        <p>$2.09</p>
+        <p>$${(estimatedTax/100).toFixed(2)}</p>
       </div>
       <div class="checkoutPlaceorder-container-div5">
         <p>Order total:</p>
-        <p>$22.98</p>
+        <p>$${(orderTotal/100).toFixed(2)}</p>
       </div>
       <button class="checkoutPlaceorder-container-button">
         Place your order
@@ -155,6 +175,9 @@ product.forEach(productitems => {
   })
 });
 Shippingpprice();
+addDeleteListeners();
+updatebttn ();
+emptycartmessage ();
 };
 function emptycartmessage (){
   if (cart.length === 0) {
@@ -198,6 +221,7 @@ function emptycartmessage (){
    </div>
      `
   };
+  
 };
 checkouProduct ();
 
@@ -214,11 +238,6 @@ function addDeleteListeners() {
           cart.splice(index, 1);
           localStorage.setItem('cart', JSON.stringify(cart));
           checkouProduct();
-          Shippingpprice();
-          addDeleteListeners();
-          updatebttn ();
-          checkout ();
-          emptycartmessage ();
         }
       });
       console.log(cart)
@@ -227,7 +246,7 @@ function addDeleteListeners() {
 }
 
 function updatebttn (){
-  const updatelnk = document.querySelectorAll('.js-cart-Update-lnk');
+const updatelnk = document.querySelectorAll('.js-cart-Update-lnk');
 const label = document.querySelectorAll('.js-product-Quantity');
 updatelnk.forEach((updatebtn)=>{
   updatebtn.addEventListener('click', () => {
@@ -245,34 +264,48 @@ updatelnk.forEach((updatebtn)=>{
                   min="1"
                 />
               </label>`;
-        
               updatebtn.innerHTML = `Save`;
               }
-              
             })
            
 
           }else if (updatebtn.innerHTML === `Save`){
             const inputlabel = document.querySelectorAll('.js-product-Quantity-label');
-            cart.forEach((items)=>{
-              if (items.productId === Number(updatebtn.dataset.productId)){
-                  inputlabel.forEach((inputlabels)=>{
-                    if (items.productId === Number(inputlabels.dataset.productId)){
-                     items.quantity = Number(inputlabels.value)
-                     localStorage.setItem('cart', JSON.stringify(cart))
-                     JSON.parse(localStorage.getItem(cart))
-                      checkouProduct();
-                      Shippingpprice();
-                      addDeleteListeners();
-                      updatebttn ();
-                    }
-                    
-                  })
+            cart.forEach((items, index)=>{
+              inputlabel.forEach((inputlabels)=>{
+                if ((inputlabels.validity.badInput) === true ){
+                  if (items.productId === Number(updatebtn.dataset.productId)){
+                    alert('Not a valid quantity')
+                  }
+                  checkouProduct()
                   
-              }
-              
+                }else if(inputlabels.value < 0 ){
+                  if (items.productId === Number(updatebtn.dataset.productId)){
+                    alert('Not a valid quantity')
+                  }
+                }else if(Number(inputlabels.value) === 0){
+                  if (items.productId === Number(updatebtn.dataset.productId)){
+                    cart.splice(index, 1);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    checkouProduct();
+                  }
+                  
+                }else{
+                  if (items.productId === Number(updatebtn.dataset.productId)){
+                      if (items.productId === Number(inputlabels.dataset.productId)){
+                        items.quantity = Number(inputlabels.value)
+                       localStorage.setItem('cart', JSON.stringify(cart))
+                       JSON.parse(localStorage.getItem(cart))
+                        checkouProduct();
+                        Shippingpprice();
+                      }
+                    
+                };
+                }
+                console.log((inputlabels.validity.badInput));
+              })
             })
-            
+          
             console.log(cart);
           }
           
@@ -291,8 +324,6 @@ checkouProduct();
 Shippingpprice();
 checkout();
 addDeleteListeners();
-updatebttn ();
-
 emptycartmessage ();
 
 
