@@ -3,9 +3,13 @@ export function updateCartHtml (){
     let quantitys = 0;
     cart.forEach((Tan) => {
         quantitys += Tan.quantity;
-    })
+    });
+    const cartIconElement = document.querySelector('.js-header-column4-p2');
 
-
-    document.querySelector('.js-header-column4-p2')
-    .innerHTML = quantitys;
+    if (cartIconElement) {
+        cartIconElement.innerHTML = quantitys;
+    }
+    
+    
 }
+updateCartHtml ();

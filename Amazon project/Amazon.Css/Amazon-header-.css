@@ -4,19 +4,36 @@ body {
 .heading {
     display: flex;
     background-color: rgb(19, 25, 33);
-    align-items: center; 
+    align-items: center;
     position: fixed;
     left: 0px;
     right: 0px;
     top: 0px;
-    padding: 10px 0px;
+    height: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
+
 }
 .header-img-column1 {
     width: 100px;
-    margin-left: 20px;
+    padding: 7px;
+    border: solid transparent 1px;
 }
+.header-img-column1:hover{
+    border: solid white 1px;
+    padding: 7px;
+    border-radius: 2px;
+    padding: 9px 7px;
+}
+.header-column1{
+    width: 180px;
+    margin: 0px;
+}
+
 .header-column2 {
     display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .header-column2 input{
     height: 30px;
@@ -26,7 +43,6 @@ body {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     font-size: 16px;
-    margin-left: 87px;
 }
 .header-column2 button{
     height: auto;
@@ -35,6 +51,7 @@ body {
     background-color: rgb(240, 188, 93);
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    cursor: pointer;
 }
 .header-column2 img {
     width: 23px;
@@ -43,21 +60,47 @@ body {
     font-size: 17px;
     font-family: roboto;
 }
+.header-column3{
+    width: 90px;
+    display: flex;
+    justify-content: right;
+}
 .header-p-column3{
     color: white;
-    width: 65px;
-    margin: 0px;
     font-size: 13px;
-    margin-left: 30px;
+    margin: 0px;
 }
-.header-p-column3 span{
+.header-column3 a{
+    border: solid transparent 1px;
+    padding: 7px;
+    border-radius: 2px;
+    text-decoration: none;
+}
+.header-column3 a:hover{
+    border: solid white 1px;
+    padding: 6px;
+}
+.header-p2-column3{
     font-weight: bold;
     font-size: 15px;
-    margin-left: 15px;
+    color: white;
+    margin: 0px;
 }
 .header-column4 {
+    width: 90px;
+    margin-left: 5px;
+}
+.header-column4 a{
     display: flex;
     position: relative;
+    border: solid transparent 1px;
+    width: 83px;
+    padding: 5px 3px ;
+    text-decoration: none;
+}
+.header-column4 a:hover{
+    border: solid white 1px;
+    border-radius: 2px;
 }
 .header-column4-p1{
     color: white;
@@ -65,12 +108,12 @@ body {
     display: flex;
     align-items: baseline;
     margin-bottom: 0px;
+    margin-right: 0px;
 }
 .header-column4-p2{
     position: absolute;
-    color: white;
-    bottom: 0px;
-    left: 16px;
+    bottom: 4px;
+    left: 19px;
     width: 26px;
     text-align: center;
     color: rgb(240, 136, 4);

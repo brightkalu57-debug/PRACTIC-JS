@@ -1,28 +1,26 @@
 import { cart } from "../Amazon data/Amazon-cart.js";
-import { checkouProduct } from "./Amazon-checkout.js";
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
-const add7days = dayjs().add(7, 'days');
-
-const add3days = dayjs().add(3, 'days');
-
-const add1days = dayjs().add(1, 'days');
 
 const deliveryOption = [{
     id: 1,
     shippingPrice: 0,
-    deliveryDate: add7days .format('dddd, MMMM D')
+    deliveryDate: dayjs().add(7, 'days')
 },{
     id: 2,
     shippingPrice: 499,
-    deliveryDate: add3days .format('dddd, MMMM D')
+    deliveryDate: dayjs().add(3, 'days')
 },{
     id: 3,
     shippingPrice: 999,
-    deliveryDate: add1days .format('dddd, MMMM D')
+    deliveryDate: dayjs().add(1, 'days')
 },
 ]
-export function addRadioEventListener (){
+export function formatDate(date){
+    return dayjs(date).format('dddd, MMMM D');
+}
+export function addRadioEventListener (checkouProduct){
+    
     const radio = document.querySelectorAll('.js-checkout-labelradio');
 
     radio.forEach((radios)=>{
@@ -33,7 +31,6 @@ export function addRadioEventListener (){
 
                     cartitems.deliveryOptionId = Number(radios.dataset.deliveryOptionId);
                     localStorage.setItem("cart", JSON.stringify(cart));
-                    console.log(Number(radios.dataset.deliveryOptionId))
             
                     checkouProduct();
                 }

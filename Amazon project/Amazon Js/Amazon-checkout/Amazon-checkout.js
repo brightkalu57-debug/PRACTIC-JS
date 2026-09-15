@@ -3,9 +3,11 @@ import {cart} from "../Amazon data/Amazon-cart.js";
 import {deliverysInfo} from "./delivery-options.js";
 import {addRadioEventListener} from "./delivery-options.js";
 import {radiosdeliveryoption} from "./delivery-options.js";
+import {formatDate} from "./delivery-options.js";
 import {formatcurrency } from "../Amazon-utils/Amazon-format-money.js";
 import {priceSummary} from "./Amazon-price-summary.js"
 import {priceSummaryVariables} from "./Amazon-price-summary.js"
+import {placeOrder } from "../Amazon-order/amazon-render-order.js"
 
 function updateCheckoutQuantityHtml (){
   let checkoutQuantity = 0;
@@ -22,140 +24,145 @@ export function checkouProduct (){
   let addedProduct = '';
   const radiosoption = radiosdeliveryoption();
   
-  product.forEach(productItems => {
-    cart.forEach((cartItems) => {
-        if (cartItems.productId === productItems.id ) {
-          const delivery = deliverysInfo(cartItems);
-          const priceSummaries = priceSummary(productItems, cartItems);
+  cart.forEach(cartItems => {
+    product.forEach((productItems) => {
+      if (cartItems.productId === productItems.id ) {
+        const delivery = deliverysInfo(cartItems);
+        const priceSummaries = priceSummary( cartItems, productItems);
 
-          addedProduct +=
-            `<div class="checkout-product-container">
-              <p class="checkout-product-container-row1-p1 js-checkout-product-container-row1-p1 ">
-              ${delivery.deliveryDate}
-              </p>
-              <div class="checkout-product-container-row2">
-                <div class="checkout-product-container-row2-column1">
-                  <div class="checkout-product-container-row2-column1-img-div">
-                    <img
-                      src="${productItems.img}"
-                    />
-                  </div>
-                  <div class="checkout-product-container-row2-column1-column2">
-                    <p class="checkout-product-container-row2-column1-column2-p1">
-                      ${productItems.name}
-                    </p>
-                    <p class="checkout-product-container-row2-column1-column2-p2">
-                      $${formatcurrency(productItems.pricecents)}
-                    </p>
-                    <p class="checkout-product-container-row2-column1-column2-p3">
-                      Quantity: 
-                      <span class='js-product-Quantity' data-product-id="${productItems.id}">${cartItems.quantity}</span> 
-                      <span class='lnk js-cart-Update-lnk' data-product-id="${productItems.id}">Update</span>
-                      <span class='lnk js-cart-delete-lnk' 
-                      data-product-id="${productItems.id}"> Delete</span>
-                    </p>
-                  </div>
+        addedProduct +=
+          `<div class="checkout-product-container">
+            <p class="checkout-product-container-row1-p1 js-checkout-product-container-row1-p1 ">
+            ${formatDate(delivery.deliveryDate)}
+            </p>
+            <div class="checkout-product-container-row2">
+              <div class="checkout-product-container-row2-column1">
+                <div class="checkout-product-container-row2-column1-img-div">
+                  <img
+                    src="${productItems.img}"
+                  />
                 </div>
-                <div class="checkout-product-container-row2-column2">
-                  <p class="checkout-product-container-row2-column1-p1">
-                    Choose a delivery option:
+                <div class="checkout-product-container-row2-column1-column2">
+                  <p class="checkout-product-container-row2-column1-column2-p1">
+                    ${productItems.name}
                   </p>
-                  <label class="checkout-product-container-row2-column2-label1 js-checkout-label" 
-                  data-product-id="${cartItems.productId}" data-product-name ="FREEShipping">
-                    <input
-                      class="js-checkout-labelradio" 
-                      type="radio"
-                      data-product-id="${cartItems.productId}"
-                      data-delivery-option-id = "1"
-                      name="${cartItems.productId}"
-                      ${cartItems.deliveryOptionId === 1 ? 'checked': ''}
-                    />
-                    <div class="checkout-product-container-row2-column2-label-p-div" >
-                      <p class="checkout-product-container-row2-column2-label-p js-checkout-product-container-row2-column2-label-p">
-                      ${radiosoption.radio1.deliveryDate}
-                      </p>
-                      <p class="checkout-product-container-row2-column2-label-p2"> FREE Shipping</p>
-                    </div>
-                    
-                  </label>
-                  <label class="checkout-product-container-row2-column2-label2 js-checkout-label" 
-                  data-product-id="${cartItems.productId}"
-                  data-product-name ="ThreedaysShipping"
-                  >
-                    <input
-                      class="js-checkout-labelradio" 
-                      type="radio"
-                      data-product-id="${cartItems.productId}"
-                      data-delivery-option-id = "2"
-                      name="${cartItems.productId}"
-                      ${cartItems.deliveryOptionId === 2 ? 'checked': ''}
-                    />
-                    <div class="checkout-product-container-row2-column2-label-p-div" >
-                    <p class="checkout-product-container-row2-column2-label-p ">
-                    ${radiosoption.radio2.deliveryDate}
-                    </p>
-                    <p class="checkout-product-container-row2-column2-label-p2">$4.99 - Shipping</p>
-                    </div>
-                    
-                  </label>
-                  <label class="checkout-product-container-row2-column2-label3 js-checkout-label" 
-                  data-product-id="${cartItems.productId}"
-                  data-product-name ="onedaysShipping"
-                  >
-                    <input
-                      class="js-checkout-labelradio" 
-                      type="radio"
-                      data-product-id="${cartItems.productId}"
-                      data-delivery-option-id = "3"
-                      name="${cartItems.productId}"
-                      ${cartItems.deliveryOptionId === 3 ? 'checked': ''}
-                    />
-                    <div class="checkout-product-container-row2-column2-label-p-div" >
-                      <p class="checkout-product-container-row2-column2-label-p">
-                      ${radiosoption.radio3.deliveryDate}
-                      </p>
-                      <p class="checkout-product-container-row2-column2-label-p2"> $9.99 - Shipping</p>
-                    </div>
-                  </label>
+                  <p class="checkout-product-container-row2-column1-column2-p2">
+                    $${formatcurrency(productItems.pricecents)}
+                  </p>
+                  <p class="checkout-product-container-row2-column1-column2-p3">
+                    Quantity: 
+                    <span class='js-product-Quantity' data-product-id="${productItems.id}">${cartItems.quantity}</span> 
+                    <span class='lnk js-cart-Update-lnk' data-product-id="${productItems.id}">Update</span>
+                    <span class='lnk js-cart-delete-lnk' 
+                    data-product-id="${productItems.id}"> Delete</span>
+                  </p>
                 </div>
               </div>
-            </div>`
-        document.querySelector('.js-Product-order-parent-div')
-        .innerHTML= 
-        `<div class="Products-parent-div">${addedProduct}</div>
-        <div class="checkoutPlaceorder-container">
-        <p class="checkoutPlaceorder-container-p1">Order Summary</p>
-        <div class="checkoutPlaceorder-container-div1">
-          <p>Items (${priceSummaries.ItemsQuantity}):</p>
-          <p>$${formatcurrency(priceSummaries.ItemsPrice)}</p>
+              <div class="checkout-product-container-row2-column2">
+                <p class="checkout-product-container-row2-column1-p1">
+                  Choose a delivery option:
+                </p>
+                <label class="checkout-product-container-row2-column2-label1 js-checkout-label" 
+                data-product-id="${cartItems.productId}" data-product-name ="FREEShipping">
+                  <input
+                    class="js-checkout-labelradio" 
+                    type="radio"
+                    data-product-id="${cartItems.productId}"
+                    data-delivery-option-id = "1"
+                    name="${cartItems.productId}"
+                    ${cartItems.deliveryOptionId === 1 ? 'checked': ''}
+                  />
+                  <div class="checkout-product-container-row2-column2-label-p-div" >
+                    <p class="checkout-product-container-row2-column2-label-p js-checkout-product-container-row2-column2-label-p">
+                    ${formatDate(radiosoption.radio1.deliveryDate)}
+                    </p>
+                    <p class="checkout-product-container-row2-column2-label-p2"> FREE Shipping</p>
+                  </div>
+                  
+                </label>
+                <label class="checkout-product-container-row2-column2-label2 js-checkout-label" 
+                data-product-id="${cartItems.productId}"
+                data-product-name ="ThreedaysShipping"
+                >
+                  <input
+                    class="js-checkout-labelradio" 
+                    type="radio"
+                    data-product-id="${cartItems.productId}"
+                    data-delivery-option-id = "2"
+                    name="${cartItems.productId}"
+                    ${cartItems.deliveryOptionId === 2 ? 'checked': ''}
+                  />
+                  <div class="checkout-product-container-row2-column2-label-p-div" >
+                  <p class="checkout-product-container-row2-column2-label-p ">
+                  ${formatDate(radiosoption.radio2.deliveryDate)}
+                  </p>
+                  <p class="checkout-product-container-row2-column2-label-p2">$4.99 - Shipping</p>
+                  </div>
+                  
+                </label>
+                <label class="checkout-product-container-row2-column2-label3 js-checkout-label" 
+                data-product-id="${cartItems.productId}"
+                data-product-name ="onedaysShipping"
+                >
+                  <input
+                    class="js-checkout-labelradio" 
+                    type="radio"
+                    data-product-id="${cartItems.productId}"
+                    data-delivery-option-id = "3"
+                    name="${cartItems.productId}"
+                    ${cartItems.deliveryOptionId === 3 ? 'checked': ''}
+                  />
+                  <div class="checkout-product-container-row2-column2-label-p-div" >
+                    <p class="checkout-product-container-row2-column2-label-p">
+                    ${formatDate(radiosoption.radio3.deliveryDate)}
+                    </p>
+                    <p class="checkout-product-container-row2-column2-label-p2"> $9.99 - Shipping</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>`
+      document.querySelector('.js-Product-order-parent-div')
+      .innerHTML= 
+      `<div class="Products-parent-div">${addedProduct}</div>
+      <div class="checkoutPlaceorder-container">
+      <p class="checkoutPlaceorder-container-p1">Order Summary</p>
+      <div class="checkoutPlaceorder-container-div1">
+        <p>Items (${priceSummaries.ItemsQuantity}):</p>
+        <p>$${formatcurrency(priceSummaries.ItemsPrice)}</p>
+      </div>
+      <div class="checkoutPlaceorder-container-div2">
+        <p>Shipping & handling:</p>
+        <p class="js-checkoutPlaceorder-container-div2">$${formatcurrency(priceSummaries.addShippingPrices)}</p>
+      </div>
+      <hr class="checkoutPlaceorder-container-hr1" />
+      <div class="checkoutPlaceorder-container-div3">
+        <p>Total before tax:</p>
+        <p>$${formatcurrency(priceSummaries.totalBeforeTax)}</p>
+      </div>
+      <div class="checkoutPlaceorder-container-div4">
+        <p>Estimated tax (10%):</p>
+        <p>$${formatcurrency(priceSummaries.estimatedTax)}</p>
+      </div>
+      <div class="checkoutPlaceorder-container-div5">
+        <p>Order total:</p>
+        <p>$${formatcurrency(priceSummaries.orderTotal)}</p>
+      </div>
+        <a href="../Amazon html/Amazon-placedorder.html">
+        <div class="checkoutPlaceorder-container-abledbutton-div">
+          <button class="checkoutPlaceorder-container-button js-checkoutPlaceorder-container-button">
+            Place your order
+          </button>
         </div>
-        <div class="checkoutPlaceorder-container-div2">
-          <p>Shipping & handling:</p>
-          <p class="js-checkoutPlaceorder-container-div2">$${formatcurrency(priceSummaries.addShippingPrices)}</p>
-        </div>
-        <hr class="checkoutPlaceorder-container-hr1" />
-        <div class="checkoutPlaceorder-container-div3">
-          <p>Total before tax:</p>
-          <p>$${formatcurrency(priceSummaries.totalBeforeTax)}</p>
-        </div>
-        <div class="checkoutPlaceorder-container-div4">
-          <p>Estimated tax (10%):</p>
-          <p>$${formatcurrency(priceSummaries.estimatedTax)}</p>
-        </div>
-        <div class="checkoutPlaceorder-container-div5">
-          <p>Order total:</p>
-          <p>$${formatcurrency(priceSummaries.orderTotal)}</p>
-        </div>
-        <button class="checkoutPlaceorder-container-button">
-          Place your order
-        </button>
+        <a/>
       </div>`
-      ;
-      }
+    ;
+    }
       updateCheckoutQuantityHtml();
     })
   })
-  addRadioEventListener();
+  placeOrder();
+  addRadioEventListener(checkouProduct);
   addDeleteListeners();
   updatebttn ();
   emptycartmessage ();
@@ -196,7 +203,7 @@ function emptycartmessage (){
        <p>Order total:</p>
        <p>$0.00</p>
      </div>
-     <div class="checkoutPlaceorder-container-button-div">
+     <div class="checkoutPlaceorder-container-disabledbutton-div">
       <button class="checkoutPlaceorder-container-button">
         Place your order
       </button>

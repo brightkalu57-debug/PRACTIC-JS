@@ -61,14 +61,27 @@
     box-shadow: 0px 0px 5px 1px rgba(128, 128, 128, 0.13);
     display: block;
 }
+.main-addedcartbtn-message{
+    color: green;
+    display: flex;
+    align-items: center;
+    margin-top: 13px;
+    margin-bottom: 15px;
+    opacity: 0;
+}
+.main-addedcartbtn-message img{
+    height: 20px;
+    margin-right: 5px;
+}
 .main-addcartbtn-div {
     background-color: rgb(255, 217, 0);
     border: none;
     width: 200px;
     padding: 10px 0px;
-    margin-top: 40px;
     border-radius: 30px;
 }
-
+.main-addcartbtn-div:hover{
+    background-color: rgb(243, 207, 2);
+}
 
 

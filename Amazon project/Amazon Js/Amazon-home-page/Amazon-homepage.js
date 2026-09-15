@@ -1,7 +1,6 @@
 import { product } from "../Amazon data/Amazon-product.js";
 import { addcartbtn } from "./Amazon-add to cart button.js";
 import {formatcurrency} from "../Amazon-utils/Amazon-format-money.js";
-
 let html = '';
 
 function renderHtml(products) {
@@ -43,10 +42,13 @@ function renderHtml(products) {
       <option value="9">9</option> 
       <option value="10">10</option>
     </select>
+    <div class="main-addedcartbtn-message js-main-addedcartbtn-message" 
+    data-product-id="${products.id}">
+      <img src="../Amazon images/checkmark.Amazon.png" /> Added
+    </div>
     <button class="main-addcartbtn-div js-main-addcartbtn" data-product-id="${products.id}">Add to Cart</button>
   </div>`;
 }
-
 
 const searchInput = document.querySelector('.js-header-column2-input');
 
@@ -70,7 +72,9 @@ function searchProduct (){
     } ;
   
     document.querySelector('.js-maincontainer').innerHTML = html;
-    addcartbtn();
+    addcartbtn(
+      document.querySelectorAll('.js-main-addcartbtn')
+      );
   })
 
   if(addmatchingProduct === 0 ){
@@ -84,7 +88,9 @@ function allProductRendering (){
     
   });
   document.querySelector('.js-maincontainer').innerHTML = html;
-  addcartbtn();
+  addcartbtn(
+    document.querySelectorAll('.js-main-addcartbtn')
+    );
 }
 allProductRendering ();
 

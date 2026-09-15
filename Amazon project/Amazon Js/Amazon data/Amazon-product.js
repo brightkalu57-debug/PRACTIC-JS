@@ -107,7 +107,7 @@ export const product = [{
     ratingstars: '4',
     ratingno: 89,
     pricecents: 3390,
-    keywords: ["waterproof", "knit", "athletic", "sneakers", "gray", "shoes"]
+    keywords: ["waterproof", "knit", "athletic", "sneakers", "gray"]
 },{
     id: 11,
     img: '../Amazon images/women-chiffon-beachwear-coverup-black.Amazon.jpg',
@@ -207,7 +207,7 @@ export const product = [{
     ratingstars: '4',
     ratingno: 326,
     pricecents: 2640,
-    keywords: ["women", "knit", "ballet", "flat", "shoes"]
+    keywords: ["women", "knit", "ballet", "flat"]
 },{
     id: 23,
     img: '/Amazon project/Amazon images/men-golf-polo-t-shirt-blue.Amazon.jpg',
@@ -339,7 +339,7 @@ export const product = [{
     ratingstars: '4',
     ratingno: 89,
     pricecents: 3390,
-    keywords: ["waterproof", "knit", "athletic", "sneakers", "pink", "shoes"]
+    keywords: ["waterproof", "knit", "athletic", "sneakers", "pink"]
 },{
     id: 39,
     img: '/Amazon project/Amazon images/countertop-blender-64-oz.Amazon.jpg',
@@ -380,4 +380,3 @@ export const product = [{
     }
     return new Product(ProductDetail);
 })
-console.log(product)

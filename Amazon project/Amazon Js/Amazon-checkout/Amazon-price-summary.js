@@ -8,8 +8,8 @@ let addShippingPrices;
 let orderTotal;
 
 export function priceSummaryVariables (){
-    ItemsQuantity = 0;   
     ItemsPrice = 0;
+    ItemsQuantity = 0;   
     totalBeforeTax = 0;
     estimatedTax = 0;
     addShippingPrices = 0;
@@ -17,8 +17,8 @@ export function priceSummaryVariables (){
 }
 priceSummaryVariables ();
 
-export function priceSummary (products, cartItems){
-    
+export function priceSummary (cartItems, products){
+
     const delivery = deliverysInfo(cartItems);
     
     ItemsQuantity += cartItems.quantity;
@@ -33,7 +33,6 @@ export function priceSummary (products, cartItems){
 
     orderTotal = ((ItemsPrice + addShippingPrices + estimatedTax));
     
-    console.log(addShippingPrices)
     return {
         ItemsQuantity,
         ItemsPrice,
@@ -41,5 +40,5 @@ export function priceSummary (products, cartItems){
         estimatedTax,
         addShippingPrices,
         orderTotal
-    }
-}
+    };
+};

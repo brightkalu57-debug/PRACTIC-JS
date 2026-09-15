@@ -43,9 +43,11 @@
 }
 .checkout-product-container-row2-column1-img-div {
     width: 100px;
+    height: 120px;
 }
 .checkout-product-container-row2-column1-img-div img {
     width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 .checkout-product-container-row2-column1-column2{
@@ -73,6 +75,9 @@
 .lnk {
     color: rgb(13, 143, 160);
     cursor: pointer;
+}
+.lnk:hover{
+    color: rgb(121, 104, 7);
 }
 .checkout-product-container-row2 {
     display: flex;
@@ -219,7 +224,11 @@
     background-color: rgb(255, 217, 0);
     border-radius: 8px;
 }
-.checkoutPlaceorder-container-button-div{
+
+.checkoutPlaceorder-container-button:hover{
+   background-color:  rgb(241, 206, 7);
+}
+.checkoutPlaceorder-container-disabledbutton-div{
     opacity: 0.5;
     cursor: none;
 }

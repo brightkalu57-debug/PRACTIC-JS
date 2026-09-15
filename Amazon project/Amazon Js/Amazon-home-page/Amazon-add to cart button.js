@@ -1,11 +1,12 @@
 import {cart} from "../Amazon data/Amazon-cart.js";
 import {updateCartHtml} from "./Amazon-update-cart-icon-.js"
 
-export function addcartbtn () {
-    document.querySelectorAll('.js-main-addcartbtn')
-    .forEach((button) => {
+export function addcartbtn (addToCartBtn) {
+    
+    addToCartBtn.forEach((button) => {
     button.addEventListener(`click`, () =>  
     {
+        
         const productId = button.dataset.productId;
         let matchingitems ;
         cart.forEach(items => {
@@ -20,7 +21,7 @@ export function addcartbtn () {
                 if(matchingitems) {
                     matchingitems.quantity += Number(selects.value)
                 }else {
-                    cart.push({
+                    cart.unshift ({
                     productId: Number(productId),
                     quantity: Number(selects.value),
                     deliveryOptionId: 1
@@ -32,11 +33,18 @@ export function addcartbtn () {
         updateCartHtml ();
         localStorage.setItem("cart", JSON.stringify(cart));
 
+        
+        const addToCartMessage = Array.from(document.querySelectorAll(`.js-main-addedcartbtn-message`));
+        const Message = addToCartMessage.find(Message=> Number(Message.dataset.productId) === Number(button.dataset.productId));
+        Message.style.opacity = `1`;
+        setTimeout(() =>{
+            Message.style.opacity = `0`;
+        }, 2000);
+        
 
     });
 });
 };
 
-addcartbtn ();
 updateCartHtml (); 
 

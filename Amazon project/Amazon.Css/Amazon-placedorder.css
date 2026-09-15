@@ -1,13 +1,16 @@
 body{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.htmlbody{
+    margin-top: 50px;
+    padding-bottom: 20px;
 }
 .page-title {
     font-family: roboto;
     font-weight: bold;
     font-size: 27px;
-    margin-top: 83px;
 }
 .Order-container{
     border: solid 1px;
@@ -15,6 +18,7 @@ body{
     border-top-left-radius: 11px;
     border-top-right-radius: 11px;
     width: 850px;
+    margin-bottom: 60px;
 }
 .Order-container-header{
     background-color:rgb(240, 242, 242);
@@ -54,10 +58,16 @@ body{
     column-gap: 35px;
     padding: 36px 23px;
 }
-.Order-container-body-grid-imgdiv-img{
+.Order-container-body-grid-imgdiv{
     width: 100px;
+    height: 120px;
     display: flex;
     align-self: center;
+}
+.Order-container-body-grid-imgdiv img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 .Order-container-body-grid-proudctdetails-name{
     font-weight: bold;
@@ -81,6 +91,9 @@ body{
     font-size: 15px;
     border-radius: 7px;
 }
+.Order-container-body-grid-proudctdetails-buy_again_btn:hover{
+    background-color:  rgb(241, 206, 7);
+}
 .Order-container-body-grid-proudctdetails-buy_again_btn img{
     width: 25px;
     margin-right: 15px;
@@ -92,4 +105,7 @@ body{
     border-radius: 7px;
     font-size: 15px;
     padding: 8px 51px;
+}
+.Order-container-body-grid-trackpackage_btn:hover{
+    background-color:  rgba(207, 206, 206, 0.164);
 }
