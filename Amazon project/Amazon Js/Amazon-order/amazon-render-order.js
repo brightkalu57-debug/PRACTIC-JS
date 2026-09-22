@@ -74,7 +74,7 @@ function generateOrderHtml (){
         let itemsHtml ='';
         order.Items.forEach((Item)=>{
             function deliveryStatus (){
-                if (Item.deliverysDate === order.ordersDate){
+                if (dayjs(Item.deliverysDate) <= dayjs()){
                     return 'Delivered on'
                 }else{
                     return 'Arriving on'
@@ -153,12 +153,11 @@ generateOrderHtml ();
 function buyItAgain () {
     
     const addToCartBtn = document.querySelectorAll('.js-Order-container-body-grid-proudctdetails-buy_again_btn')
-    console.log('orderbttn')
+    
     addToCartBtn.forEach((button) => {
     button.addEventListener(`click`, () =>  
     {
         
-        console.log('orderbttn')
         const productId = button.dataset.productId;
         let matchingitems ;
         cart.forEach(items => {
