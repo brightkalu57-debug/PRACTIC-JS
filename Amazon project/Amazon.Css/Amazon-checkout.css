@@ -6,7 +6,7 @@
     padding: 10px 75px;
 }
 .amazon-logo {
-    width: 100px;
+    width: 180px;
 }
 .header-p1 {
     font-size: 25px;
@@ -16,6 +16,9 @@
 .header-p1 a{
     color: rgb(13, 143, 160);
     text-decoration: none;
+}
+.checkout-lock-icon{
+    width: 35px;
 }
 .checkout-main{
     margin-left: 75px;
