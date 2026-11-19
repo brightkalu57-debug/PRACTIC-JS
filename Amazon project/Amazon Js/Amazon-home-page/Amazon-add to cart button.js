@@ -34,7 +34,7 @@ export function addcartbtn (addToCartBtn) {
         localStorage.setItem("cart", JSON.stringify(cart));
 
         
-        const addToCartMessage = Array.from(document.querySelectorAll(`.js-main-addedcartbtn-message`));
+        const addToCartMessage = (document.querySelectorAll(`.js-main-addedcartbtn-message`));
         const Message = addToCartMessage.find(Message=> Number(Message.dataset.productId) === Number(button.dataset.productId));
         Message.style.opacity = `1`;
         setTimeout(() =>{
